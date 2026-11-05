@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黄金裔图鉴</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        #main {
+            width: 100%;
+        }
+
+        body.lock {
+            overflow: hidden;
+        }
+
+        .show,
+        #imfo {
+            width: 100%;
+            height: 100vh;
+        }
+
+        .off {
+            display: none !important;
+        }
+
+        .show {
+            background: url('https://iili.io/n8kINXn.png') center/ 100% auto;
+            background-size: cover;
+            z-index: 1;
+            display: flex;
+            overflow: hidden;
+            top: 0;
+            justify-content: center;
+        }
+
+        .containerall {
+            display: flex;
+            width: max-content;
+
+            animation: spin 60s infinite linear;
+            gap: 0;
+
+        }
+
+        .container {
+            margin-top: 58vh;
+            flex: 0 0 auto;
+            width: max-content;
+            height: 40vh;
+            display: flex;
+            gap: 10vw;
+            padding-right: 10vw;
+
+
+
+        }
+
+        .view {
+
+            flex: 0 0 auto;
+            width: 50vw;
+            max-width: 100%;
+            overflow: hidden;
+
+            height: 100%;
+
+        }
+
+        #imfo {
+            width: 100%;
+
+            display: grid;
+            grid-template-columns: 1fr 5fr;
+            z-index: 1;
+        }
+
+        .p3,
+        .p4,
+        .p5,
+        .p6 {
+            display: grid;
+            width: 100%;
+            height: 100svh;
+
+        }
+
+        #nav {
+            display: flex;
+            flex-direction: column;
+            height: 100svh;
+            background: linear-gradient(180deg, #121D48 0, #2F3E80 50%, #7686D5 100%);
+        }
+
+        #content {
+            display: grid;
+        }
+
+        .infinity-logo {
+            width: 8vw;
+        }
+
+        .class {
+            margin-bottom: auto;
+        }
+
+        #player {
+            margin-top: auto;
+            padding: rem;
+        }
+
+        .p4,
+        .p5,
+        .p6 {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            background-color: #F2EFEA;
+
+        }
+
+        .dict {
+            display: grid;
+            grid-template-rows: 2fr 4fr;
+
+        }
+
+        .top {
+            display: flex;
+            justify-content: end;
+            align-items: end;
+            padding: 3rem 6.4rem;
+            background-color: #F2EFEA;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            background-color: #F2EFEA;
+
+        }
+
+        .p {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .text {
+            color: #995538;
+
+        }
+
+        .p4 .p,
+        .p5 .p {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .p6 .p {
+            display: flex;
+            justify-content: start;
+            padding-top: 20svh;
+        }
+
+        .z,
+        .z div {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            color: #F1E5BE;
+            font-size: 1.2vw;
+            line-height: 3vw;
+        }
+
+        .z.close .classify {
+            display: none !important;
+        }
+        .open svg{
+            transition: transform .3s ease;
+        }
+        .z.close .open svg {
+            transform: rotate(180deg);
+        }
+
+        .z .cf {
+            display: flex;
+            flex-direction: row;
+            padding: 0.8rem;
+            align-items: center;
+        }
+
+        #player {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .open.on,
+        .open {
+            width: 32px;
+            border: none;
+            background: none;
+            margin-left: auto;
+        }
+
+        .c {
+            background-color: #f2efea75;
+        }
+
+        .p1 {
+            width: 100%;
+            height: 100svh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.45);
+            z-index: 100;
+        }
+
+        .signup {
+            width: 40vw;
+            height: 60vh;
+            z-index: 2000;
+
+            display: flex;
+            gap: 1rem;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #EEEEEE;
+            line-height: 5vh;
+        }
+
+        .in-put {
+            display: flex;
+            flex-direction: column;
+            gap: 2vh;
+
+        }
+
+        #entry {
+            border: none;
+            background-color: #FFDD99;
+            font-size: large;
+            width: 20vw;
+            height: 5vh;
+
+        }
+
+
+        .enterbox {
+            width: 20vw;
+            height: 5vh;
+            font-size: large;
+        }
+
+        img {
+            width: 9vw;
+        }
+
+        img.card {
+            width: 17vw;
+        }
+
+        #playerimg {
+            width: 4.5vw;
+            border-radius: 999px;
+        }
+
+        #detail {
+            width: 100%;
+            height: 100svh;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .back {
+            width: 100%;
+            height: 100svh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.45);
+        }
+
+        .intro {
+            width: 60vw;
+            height: 60vh;
+            display: none;
+            position: relative;
+            background: linear-gradient(180deg, #000000 0%, #242116 50%, #746049);
+            gap: 2vw;
+            padding: 2vw;
+            color: rgba(223, 192, 151, 0.735);
+            border-radius: 15px;
+        }
+
+        .intro.on {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2vw;
+            padding: 2vw;
+            color: rgba(223, 192, 151, 0.735);
+            background: linear-gradient(180deg, #000000 0%, #242116 50%, #746049);
+            border-radius: 15px;
+        }
+
+        .card {
+            margin-right: auto;
+        }
+
+        .charac {
+            text-align: center;
+            line-height: 4vh;
+        }
+
+        .line {
+            width: 25vw;
+            height: 1px;
+            justify-self: center;
+            background-color: rgba(223, 192, 151, 0.735);
+        }
+
+        button {
+            border: none;
+            padding: 0;
+        }
+
+        @keyframes spin {
+            from {
+                translate: 0;
+            }
+
+            to {
+                translate: -50%;
+            }
+        }
+        @media (max-width:580px) {
+            .signup{
+                width: 80vw;
+                height: 50vh;
+                
+            }
+            .enterbox,
+            #entry{
+                width: 65vw;
+            }
+            img{
+                width:20vw ;
+            }
+            #nav{
+                display: none;
+            }
+            .z,
+            .z div{
+                font-size: large;
+            }
+            #imfo{
+                display: flex;
+
+            }
+            .top{
+                display: flex;
+                justify-content: center;
+                
+            }
+            .dict{
+                display: grid;
+                grid-template-rows:1fr 3fr  ;
+            }
+            .intro.on{
+                width: 80vw;
+                height: 50vh;
+            }
+            .intro.on img{
+                display: none;
+            }
+            .line{
+                width: 70vw;
+                justify-self: center;
+            }
+            .show{
+                background-position: center center;
+                background-repeat: no-repeat;
+                background:url(https://iili.io/nQR4fUb.png) ; 
+                background-size: 99.9%;
+            }
+            
+            .view{
+                width: 60vw;
+            }
+            .container img{
+                width: 15vw;
+            }
+            .container{
+                margin-top: 40vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="main">
+        <section class="p1" id="sign">
+            <div class="signup">
+                <div class="patten">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.5 -0.5 183.74 51.28" width="183.74"
+                        height="51.28" aria-label="miHoYo">
+                        <defs>
+                            <linearGradient id="mhy" x1="0" x2="1">
+                                <stop offset="0" stop-color="#7ED8E5" />
+                                <stop offset=".28" stop-color="#6EB9DA" />
+                                <stop offset=".44" stop-color="#5DA0CC" />
+                                <stop offset="1" stop-color="#5A9CC6" />
+                            </linearGradient>
+                        </defs>
+                        <path fill="url(#mhy)" fill-rule="evenodd"
+                            d="M56.98 0.72c4.7 4.48 0.05 13.23-6.02 9.13-2.85-1.92-3.46-5.94-0.74-8.12 1.23-0.98 2.78-1.74 4.38-1.73 0.56 0.01 1.12 0.11 1.64 0.33 0.26 0.11 0.98 0.54 0.74 0.39zM75.94 20.05c12.35 5.42 3.16-14.06 10.52-16.29 1.47-0.44 3.19-0.26 4.52 0.53 2.69 1.61 2.45 6.39 2.41 9.12-0.12 8.44-0.25 16.88-0.12 25.32 0.04 3.01 1.12 7.81-1.76 9.84-7.68 5.41-8.04-5.3-8.06-9.59 0-1.59 0.06-3.21-0.13-4.8-0.06-0.56-0.21-1.09-0.43-1.61-0.1-0.21-0.34-0.87-0.26-0.65-10.12-4.38-6.69 8.71-7.65 13.63-0.6 3.04-4.37 5.45-7.24 3.44-2.94-2.06-2.5-6.32-2.5-9.45 0-8.36-0.17-16.73 0.1-25.09 0.08-2.55-0.92-8.33 1.37-10.11 7.2-5.6 8.1 4.53 8.38 8.74 0.11 1.56 0.16 3.12 0.27 4.68 0.03 0.52 0.1 1.03 0.26 1.53 0.09 0.26 0.44 1.01 0.32 0.76zM155.07 4.03c2.3 3.31-3.04 9.68-4.6 12.59-1.09 2.03-2.86 4.05-3.51 6.27-1.74 5.92 0.42 15.01-0.39 21.55-0.4 3.22-2.55 6.09-6.22 4.92-5.82-1.85-2.94-19.92-3.84-25.45-0.67-4.16-10.27-16.78-8.24-19.62 0.73-1.03 1.96-1.1 3.11-1.13 7.97-0.2 6.3 7.57 10.45 8.15 1.44 0.2 4.39-6.62 6.25-7.65 1.36-0.75 3.31-0.81 4.81-0.51 1.08 0.22 3.26 1.49 2.18 0.88zM124.67 17.76c-2.19-1.7 0.09-5.69 2.3-4.44 1.39 0.79 0.77 3.62-0.1 4.57-0.39 0.42-1.2 0.63-1.73 0.36-0.2-0.1-0.6-0.68-0.47-0.49zM103.94 16.55c-0.11 0.08-0.36 0.4-0.28 0.29-3.64 2.55-4.41-1.7-2.73-3.27 1.05-0.98 2.97 0.55 3.25 1.62 0.12 0.44-0.45 1.77-0.24 1.36zM182.57 14.2c-0.6 2.29-2.56 3.32-2.4 6.06 0.27 4.84 3 8.72 2.53 13.81-1.03 11.02-12.74 20.63-23.27 13.23-9.66-6.79-9.7-22.67-0.19-29.71 5.35-3.96 11.31-0.99 16.83-3.06 1.39-0.52 2.93-1 4.43-0.99 0.5 0 1.05 0.04 1.52 0.25 0.21 0.09 0.71 0.58 0.55 0.41zM172.91 37.36c5.78-3.37-1.76-18.31-9.83-11.03-3.62 3.27-3.31 10.37 0.89 12.94 1.77 1.09 4.32 1.93 6.25 0.77 1.54-0.93 2.76-2.83 2.69-2.68zM39.46 18.15c5.96 3.47 0.47 19.57 5.14 20.65 3.21 0.74 3.94-2.98 3.9-5.31-0.08-5.09-1.72-20.08 7.51-16.69 3.46 1.27 2.74 6.41 2.74 9.34-0.01 8.3 0.89 17.18-6.69 22.72-5.44 3.98-17.47-0.94-19.11-8.14-0.7-3.08-0.1-6.22-0.31-9.33-0.08-1.16-0.26-2.31-0.59-3.42-0.12-0.39-0.51-1.52-0.38-1.14-3.73-2.56-5.17 0.89-5.27 4.16-0.15 4.54 2.12 19.15-5.3 18.95-6.01-0.16-5.23-15.02-4.84-19.09 0.24-2.49-0.71-6.02-4.06-4.94-4.01 1.28-0.53 16.72-2.32 20.52-1.58 3.36-6.68 4.54-8.65 1.01-1.98-3.56-1-7.7-0.9-11.55 0.17-6.58-1.07-18.12 7.42-20.65 3.1-0.92 7.72-0.51 10.58 1 0.97 0.51 2.19 1.77 3.3 1.85 2.82 0.2 5.68-3.24 8.73-3.4 2.2-0.13 4.5 0.51 6.45 1.53 0.67 0.35 1.31 0.76 1.92 1.22 0.27 0.2 0.91 1 0.73 0.71zM102.77 44.4c-7.31-11.17-3.43-30.81 12.94-29.35 3.07 0.28 6.67 1.43 9.01 3.5 7.39 6.55 5.03 23.67-2.78 28.87-3.86 2.57-9.15 3.21-13.41 1.26-1.51-0.68-2.65-1.71-3.89-2.77-0.43-0.36-0.85-0.73-1.29-1.08-0.19-0.15-0.77-0.57-0.58-0.43zM109.57 26.44c-4.3 5.33-0.87 17.47 6.93 13.4 4.86-2.54 5.88-9.68 2.15-13.59-1.47-1.55-4.29-2.08-6.27-1.5-1.05 0.31-3.6 2.45-2.81 1.69z" />
+                    </svg>
+                </div>
+                <form action="/" method="post" class="in-put">
+                    <input type="name" class="enterbox" placeholder="用户名" minlength="1">
+                    <input type="password" class="enterbox" placeholder="密码" minlength="1">
+                    <label class="justify">
+                        <input type="checkbox" id="agree" required>已同意《用户协议》和《隐私政策》
+                    </label>
+
+                    <input type="submit" value="进入游戏" id="entry">
+                </form>
+
+            </div>
+
+        </section>
+        <section class="p2" id="display">
+            <div class="show">
+                <div class="view">
+                    <div class="containerall">
+
+                        <div class="container">
+
+                            <div class="item" data-cha="xilian">
+                                <img src="https://iili.io/nLfKdNa.png">
+                            </div>
+                            <div class="item" data-cha="tibao">
+                                <img src="https://iili.io/nLfFfa9.png">
+                            </div>
+                            <div class="item" data-cha="kelv">
+                                <img src="https://iili.io/nLfcEes.png">
+                            </div>
+                            <div class="item" data-cha="yue">
+                                <img src="https://iili.io/nLfG5lV.png">
+                            </div>
+                            <div class="item" data-cha="dan">
+                                <img src="https://iili.io/nLf5nAx.png">
+                            </div>
+                            <div class="item" data-cha="fengjin">
+                                <img src="https://iili.io/nLfE4AF.png">
+                            </div>
+                            <div class="item" data-cha="baie">
+                                <img src="https://iili.io/nLf0ZzJ.png">
+                            </div>
+                            <div class="item" data-cha="haiseyin">
+                                <img src="https://iili.io/nLf0oNa.png">
+                            </div>
+                            <div class="item" data-cha="nakexia">
+                                <img src="https://iili.io/nLfVtKx.png">
+                            </div>
+                            <div class="item" data-cha="aya">
+                                <img src="https://iili.io/nLfTeGn.png">
+                            </div>
+                            <div class="item" data-cha="wandi">
+                                <img src="https://iili.io/nLf1rQf.png">
+                            </div>
+                            <div class="item" data-cha="xiadie">
+                                <img src="https://iili.io/nLfWhUQ.png">
+                            </div>
+                            <div class="item" data-cha="saifeier">
+                                <img src="https://iili.io/nLfKps4.png">
+                            </div>
+
+                            <div class="container">
+                                <div class="item" data-cha="xilian">
+                                    <img src="https://iili.io/nLfKdNa.png">
+                                </div>
+                                <div class="item" data-cha="tibao">
+                                    <img src="https://iili.io/nLfFfa9.png">
+                                </div>
+                                <div class="item" data-cha="kelv">
+                                    <img src="https://iili.io/nLfcEes.png">
+                                </div>
+                                <div class="item" data-cha="yue">
+                                    <img src="https://iili.io/nLfG5lV.png">
+                                </div>
+                                <div class="item" data-cha="dan">
+                                    <img src="https://iili.io/nLf5nAx.png">
+                                </div>
+                                <div class="item" data-cha="fengjin">
+                                    <img src="https://iili.io/nLfE4AF.png">
+                                </div>
+                                <div class="item" data-cha="baie">
+                                    <img src="https://iili.io/nLf0ZzJ.png">
+                                </div>
+                                <div class="item" data-cha="haiseyin">
+                                    <img src="https://iili.io/nLf0oNa.png">
+                                </div>
+                                <div class="item" data-cha="nakexia">
+                                    <img src="https://iili.io/nLfVtKx.png">
+                                </div>
+                                <div class="item" data-cha="aya">
+                                    <img src="https://iili.io/nLfTeGn.png">
+                                </div>
+                                <div class="item" data-cha="wandi">
+                                    <img src="https://iili.io/nLf1rQf.png">
+                                </div>
+                                <div class="item" data-cha="xiadie">
+                                    <img src="https://iili.io/nLfWhUQ.png">
+                                </div>
+                                <div class="item" data-cha="saifeier">
+                                    <img src="https://iili.io/nLfKps4.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div id="imfo">
+            <div id="nav">
+                <a class="wfls">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" aria-label="Infinity"
+                        class="infinity-logo">
+                        <defs>
+                            <path id="inf-shape"
+                                d="M195.6 108.8c2-1.1 42.8 21.2 57.9 27.8 15.1 6.6 40.4 17.4 65.6 14.1 25.1-3.3 42.9-23.4 43.9-44.8 1-21.3-13.1-44-37.9-49.9-24.8-5.9-50.7 3.5-65.8 10.1-15.1 6.5-54.4 29.6-58.8 27.1-4.4-2.6-48.5-30.5-57.6-35.4-9.1-4.8-36.5-20.2-64.6-15.6-28.2 4.6-40 28.5-41.9 46.9-2 18.4 7.7 43.3 32.7 54.6 25 11.2 58.6-1.9 66.2-4.8 7.6-2.9 58.3-29 60.3-30.1M217.4 106.6c-7.7-4.2 28-16.3 40.4-20.2 12.4-3.9 35.1-9.1 49-8.6 13.9 0.5 32.2 6.4 34.3 29.2 2.1 22.8-13.8 30.6-30.1 31.6-16.3 1-39-6.7-48.6-10.4-9.5-3.8-37.3-17.4-45-21.6M184.2 98.3c6.7 3.7-27.6 19.3-39.2 24.3-11.5 5-33.5 13.3-49.9 13.3-16.4-0.1-35-6.6-35.6-29.9-0.6-23.3 9.2-35.7 26.5-38.7 17.3-3 41.7 5.3 51.1 8.8 9.4 3.5 40.4 18.6 47 22.2" />
+                            <linearGradient id="inf-g" x2="1">
+                                <stop offset="0" stop-color="#96F5E4" />
+                                <stop offset=".14" stop-color="#A2EAF2" />
+                                <stop offset=".28" stop-color="#AFD2FA" />
+                                <stop offset=".38" stop-color="#BFA0FA" />
+                                <stop offset=".45" stop-color="#D2B4F4" />
+                                <stop offset=".5" stop-color="#F6ECFF" />
+                                <stop offset=".55" stop-color="#FCF4DC" />
+                                <stop offset=".62" stop-color="#EFDC90" />
+                                <stop offset=".66" stop-color="#F2E48E" />
+                                <stop offset=".72" stop-color="#F8F0A8" />
+                                <stop offset=".86" stop-color="#FFFBD8" />
+                                <stop offset=".95" stop-color="#FFE8EE" />
+                                <stop offset="1" stop-color="#FFC6E0" />
+                            </linearGradient>
+                            <radialGradient id="inf-core">
+                                <stop offset="0" stop-color="#FFF" />
+                                <stop offset=".4" stop-color="#FFF" />
+                                <stop offset=".5" stop-color="#FFF4FF" stop-opacity=".9" />
+                                <stop offset="1" stop-color="#E0B8FF" stop-opacity="0" />
+                            </radialGradient>
+                            <filter id="inf-soft">
+                                <feGaussianBlur stdDeviation="4" />
+                            </filter>
+                            <filter id="inf-star">
+                                <feGaussianBlur stdDeviation="1.5" />
+                            </filter>
+                        </defs>
+                        <use href="#inf-shape" filter="url(#inf-soft)" opacity=".65" fill="url(#inf-g)" />
+                        <use href="#inf-shape" fill="url(#inf-g)" />
+                        <circle cx="200" cy="100" r="9" fill="url(#inf-core)" />
+                        <path d="M200 62l2.6 35 41.4 3-41.4 3-2.6 35-2.6-35-41.4-3 41.4-3z" fill="#FFF" opacity=".9"
+                            filter="url(#inf-star)" />
+                        <path d="M200 76l2 21.8 26 2.2-26 2.2-2 21.8-2-21.8-26-2.2 26-2.2z" fill="#FFF" opacity=".85" />
+                        <path d="M200 84l1.3 14.6 14.7 1.4-14.7 1.4-1.3 14.6-1.3-14.6-14.7-1.4 14.7-1.4z" fill="#FFF"
+                            opacity=".5" transform="rotate(45 200 100)" />
+                    </svg>
+                </a>
+
+                <div class="list">
+                    <div class="z close">
+                        <div class="cf">
+                            <div class="cff">黄金裔</div>
+                            <button class="open on">
+                                <svg t="1793532172309" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg" p-id="1619" width="32" height="32">
+                                    <path
+                                        d="M512.058541 1024A512 512 0 1 0 0 512a512.58541001 512.58541001 0 0 0 512.058541 512z m0-952.872627a440.872627 440.872627 0 1 1-440.931168 440.872627 441.399497 441.399497 0 0 1 440.931168-440.872627zM223.099931 454.278527a35.592957 35.592957 0 0 1 50.28676-50.286759l236.330208 236.330208 236.330208-236.330208a35.592957 35.592957 0 0 1 50.345301 50.286759l-261.619941 261.50285899a35.592957 35.592957 0 0 1-50.286759 2e-8L223.099931 454.278527z"
+                                        fill="#F1E5BE" p-id="1620"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="classify">
+                            <div class="c">昼之半神 </div>
+                            <div class="c">夜之半神</div>
+                            <div class="c">救世主</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="player">
+                    <img id="playerimg" src="https://iili.io/nvLevmx.png"></a>
+                    <div id="pname"></div>
+                </div>
+            </div>
+            <div id="content">
+                <section class="p3 off" id="total">
+                    <div class="dict">
+                        <div class="top">
+                            <div class="p" data-cha="xilian">
+                                <button class="click">
+                                    <img src="https://iili.io/nvLhxrG.png">
+                                </button>
+                                <div class="text">无瑕的真我 昔涟</div>
+                            </div>
+                        </div>
+                        <div class="cards">
+                            <div class="p" data-cha="tibao">
+                                <button class="click">
+                                    <img src="https://iili.io/nvLkYQV.png">
+                                </button>
+                                <div class="text">门径的圣子 缇宝</div>
+                            </div>
+                            <div class="p" data-cha="kelv">
+                                <button class="click">
+                                    <img src="https://iili.io/nvLkZF9.png">
+                                </button>
+                                <div class="text">律法的君主 刻律德菈</div>
+                            </div>
+                            <div class="p" data-cha="yue">
+                                <button class="click">
+                                    <img src="https://iili.io/nvLkHrX.png">
+                                </button>
+                                <div class="text">隐秘的陌客 三月七</div>
+                            </div>
+                            <div class="p" data-cha="dan">
+                                <button class="click">
+                                    <img src="https://iili.io/nvLkI2e.png">
+                                </button>
+                                <div class="text">腾飞的荒龙 丹恒</div>
+                            </div>
+                            <div class="p" data-cha="haiseyin">
+                                <button class="click">
+                                    <img src="https://iili.io/nvLh3ep.png">
+                                </button>
+                                <div class="text">海洋的剑骑 海瑟音</div>
+                            </div>
+                            <div class="p" data-cha="fengjin">
+                                <button class="click">
+                                    <img src="https://iili.io/n8eVO79.png">
+                                </button>
+                                <div class="text">天空的医师 风堇</div>
+                            </div>
+                            <div class="p" data-cha="baie">
+                                <button class="click">
+                                    <img src="https://iili.io/nvLkfI4.png">
+                                </button>
+                                <div class="text">负火的囚徒 卡厄斯兰那</div>
+                            </div>
+                            <div class="p" data-cha="nakexia">
+                                <button class="click">
+                                    <img src="https://iili.io/nvLkhjR.png">
+                                </button>
+                                <div class="text">理性的学士 那刻夏</div>
+                            </div>
+                            <div class="p" data-cha="aya">
+                                <button class="click">
+                                    <img src="https://iili.io/nvLvnwv.png">
+                                </button>
+                                <div class="text">浪漫的织者 阿格莱雅</div>
+                            </div>
+                            <div class="p" data-cha="wandi">
+                                <button class="click">
+                                    <img src="https://iili.io/nvLkGYg.png">
+                                </button>
+                                <div class="text">纷争的冠军 万敌</div>
+                            </div>
+                            <div class="p" data-cha="xiadie">
+                                <button class="click">
+                                    <img src="https://iili.io/nvLvRcX.png">
+                                </button>
+                                <div class="text">来生的侍女 遐蝶</div>
+                            </div>
+                            <div class="p" data-cha="saifeier">
+                                <button class="click">
+                                    <img src="https://iili.io/nvLeDIR.png">
+                                </button>
+                                <div class="text">诡计的羁客 赛飞儿</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="p4 off" id="zhou">
+                    <div class="p" data-cha="xilian">
+                        <button class="click">
+                            <img src="https://iili.io/nvLhxrG.png">
+                        </button>
+                        <div class="text">无瑕的真我 昔涟</div>
+                    </div>
+                    <div class="p" data-cha="tibao">
+                        <button class="click">
+                            <img src="https://iili.io/nvLkYQV.png">
+                        </button>
+                        <div class="text">门径的圣子 缇宝</div>
+                    </div>
+                    <div class="p" data-cha="haiseyin">
+                        <button class="click">
+                            <img src="https://iili.io/nvLh3ep.png">
+                        </button>
+                        <div class="text">海洋的剑骑 海瑟音</div>
+                    </div>
+                    <div class="p" data-cha="fengjin">
+                        <button class="click">
+                            <img src="https://iili.io/n8eVO79.png">
+                        </button>
+                        <div class="text">天空的医师 风堇</div>
+                    </div>
+                    <div class="p" data-cha="nakexia">
+                        <button class="click">
+                            <img src="https://iili.io/nvLkhjR.png">
+                        </button>
+                        <div class="text">理性的学士 那刻夏</div>
+                    </div>
+                    <div class="p" data-cha="aya">
+                        <button class="click">
+                            <img src="https://iili.io/nvLvnwv.png">
+                        </button>
+                        <div class="text">浪漫的织者 阿格莱雅</div>
+                    </div>
+                </section>
+                <section class="p5 off" id="ye">
+                    <div class="p" data-cha="xilian">
+                        <button class="click">
+                            <img src="https://iili.io/nvLhxrG.png">
+                        </button>
+                        <div class="text">无瑕的真我 昔涟</div>
+                    </div>
+                    <div class="p" data-cha="kelv">
+                        <button class="click">
+                            <img src="https://iili.io/nvLkZF9.png">
+                        </button>
+                        <div class="text">律法的君主 刻律德菈</div>
+                    </div>
+                    <div class="p" data-cha="yue">
+                        <button class="click">
+                            <img src="https://iili.io/nvLkHrX.png">
+                        </button>
+                        <div class="text">隐秘的陌客 三月七</div>
+                    </div>
+                    <div class="p" data-cha="dan">
+                        <button class="click">
+                            <img src="https://iili.io/nvLkI2e.png">
+                        </button>
+                        <div class="text">腾飞的荒龙 丹恒</div>
+                    </div>
+                    <div class="p" data-cha="wandi">
+                        <button class="click">
+                            <img src="https://iili.io/nvLkGYg.png">
+                        </button>
+                        <div class="text">纷争的冠军 万敌</div>
+                    </div>
+                    <div class="p" data-cha="xiadie">
+                        <button class="click">
+                            <img src="https://iili.io/nvLvRcX.png">
+                        </button>
+                        <div class="text">来生的侍女 遐蝶</div>
+                    </div>
+                    <div class="p" data-cha="saifeier">
+                        <button class="click">
+                            <img src="https://iili.io/nvLeDIR.png">
+                        </button>
+                        <div class="text">诡计的羁客 赛飞儿</div>
+                    </div>
+                </section>
+                <section class="p6 off" id="jiu">
+                    <div class="p" data-cha="baie">
+                        <button class="click">
+                            <img src="https://iili.io/nvLkfI4.png">
+                        </button>
+                        <div class="text">负火的囚徒 卡厄斯兰那</div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div id="detail" class="p7 off">
+            <div class="back">
+                <div class="intro" id="haiseyin">
+                    <img class="card" src="https://iili.io/n4XSVh7.png">
+                    <div class="charac">
+                        <h3>海洋的剑骑 海瑟音</h3>
+                        <div class="line"></div>
+                        <p>游鱼洄游于漆黑渊底，在昏暗之海追寻光明。<br>
+                            苦厄的波涛，谎言的潮汐，宿命的骇浪，冲刷她空无的魂灵。<br>她是一柄冰冷的剑旗，为一颗灼热的野心起舞，最终破碎零星。<br>空留缥缈乐音，不知为谁而鸣。</p>
+                    </div>
+                </div>
+                <div class="intro" id="xilian">
+                    <img class="card" src="https://iili.io/n4XL1vn.png">
+                    <div class="charac">
+                        <h3>无瑕的真我 昔涟</h3>
+                        <div class="line"></div>
+                        <p>当漫长的岁月在身后消融，化作流星落向未期，该如何留下一枚音符、一句话?<br>该如何记忆一颗种子、一朵花?<br>
+                            也许，只需轻哼着歌谣走向未来，不必苦等。<br>
+                            因为在她诞生的地方，人们将「初见」，念作「重逢」。</p>
+                    </div>
+                </div>
+                <div class="intro" id="tibao">
+                    <img class="card" src="https://iili.io/n4Xs2iN.png">
+                    <div class="charac">
+                        <h3>门径的圣子 缇宝</h3>
+                        <div class="line"></div>
+                        <p>孩童此行良久，是音曾透着犹疑，离别的泪也总叫她们芳毫垂低。<br>命运的宠儿试图背弃命运。<br>西风尽头，果真存在一片芬馥之地?<br>万千门径之中，三子携手销去身形，只余丝缕渐弱的流音......
+                            <br>--何须那命运回应。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="intro" id="kelv">
+                    <img class="card" src="https://iili.io/n4Xsg1I.png">
+                    <div class="charac">
+                        <h3>律法的君主 刻律德菈</h3>
+                        <div class="line"></div>
+                        <p>岁月流转，王朝更替。<br>苍生呼唤君主，渴求指引。<br>在君主眼里，臣民皆为刍狗，天地亦是秤上砝码。<br>若可将死敌役，代价不足为惜，万物皆可为棋。<br>在与神明的战场上，胜利高于正义。
+                        </p>
+                    </div>
+                </div>
+                <div class="intro" id="yue">
+                    <img class="card" src="https://iili.io/n4Xiqwx.png">
+                    <div class="charac">
+                        <h3>隐秘的陌客 三月七</h3>
+                        <div class="line"></div>
+                        <p>在永夜之帷的画卷上，挂着两轮月亮。<br>
+                            光影交错，时隐时现，仿佛一圈舞步的回旋。<br>
+                            相传于月相的起点，会有阵阵欢笑从天幕中传出，驱散长夜的孤寂。<br>那是岁月的呓语，亦或故人的声音?</p>
+                    </div>
+                </div>
+                <div class="intro" id="dan">
+                    <img class="card" src="https://iili.io/n4XPqBI.png">
+                    <div class="charac">
+                        <h3>腾飞的荒龙 丹恒</h3>
+                        <div class="line"></div>
+                        <p>大地深处囚着远古的低喃，亘古的眼眸将岁月望穿。<br>当巨龙的脊背嵌满苦痛的悲鸣，
+                            万千生灵求存的渴望将凝成最后的逆鳞<br>--对命运的僭叛，是守护者最后的巍冠。</p>
+                    </div>
+                </div>
+                <div class="intro" id="fengjin">
+                    <img class="card" src="https://iili.io/n4XQK9n.png">
+                    <div class="charac">
+                        <h3>天空的医师 风堇</h3>
+                        <div class="line"></div>
+                        <p>世间有众繁气象，都曾令那无垠天穹喧闹沸腾。<br>
+                            而当余晖散尽，在那阴晴弥合、晨昏并拢的时刻.....<br>她为彷徨者拥留最后的胧明，以笑涡为伤疼的宿命点亮虹光。</p>
+                    </div>
+                </div>
+                <div class="intro" id="baie">
+                    <img class="card" src="https://iili.io/n4Xrodb.png">
+                    <div class="charac">
+                        <h3>负火的囚徒 卡厄斯兰那</h3>
+                        <div class="line"></div>
+                        <p>世末的昕旦，英雄举起映着斜晖的剑，战追逐着黄昏的夜色。<br>
+                            那人的胸膛跃动着闪耀的星，灼目如死去的日轮，向苍夷的大地射下银针。<br>他隐去名字，不闻声华，将往昔葬于凝固在记忆里的乡，誓死捍卫新的黎明。<br>哪怕那黎明将烧却一切。</p>
+                    </div>
+                </div>
+                <div class="intro" id="nakexia">
+                    <img class="card" src="https://iili.io/n4XQ0PV.png">
+                    <div class="charac">
+                        <h3>理性的学士 那刻夏</h3>
+                        <div class="line"></div>
+                        <p>那高高在上的，又是何者授予它们神格?<br>
+                            学士漫步神悟树庭，执此一问，驳斥眼之所见的一切智者。<br>
+                            恰如他所精擅的魔术，辩才无双的反对者们，开口时便已坠入陷阱<br> -神格亦是由他者「授予」。<br>倾尽残生，这渎神者从未探究......他仅作证明。</p>
+                    </div>
+                </div>
+                <div class="intro" id="aya">
+                    <img class="card" src="https://iili.io/n4X6g19.png">
+                    <div class="charac">
+                        <h3>浪漫的织者 阿格莱雅</h3>
+                        <div class="line"></div>
+                        <p>永不落幕的圣城，仿若与黄金之茧的半神昔在永在。<br>
+                            视物已成双眼的负累，她指尖的金丝，将无数尘埃间的低语和鲜血凝成的歌传至耳边。<br>
+                            梦是千百种可能的连缀，藉由命运丝线编织的未来更是如此。<br>织者落枕入梦...<br>
+                            --于梦中，她窥见了更为灼眼的金色。</p>
+                    </div>
+                </div>
+                <div class="intro" id="wandi">
+                    <img class="card" src="https://iili.io/n4X6zxV.png">
+                    <div class="charac">
+                        <h3>纷争的冠军 万敌</h3>
+                        <div class="line"></div>
+                        <p>来处蒙尘已久。<br>
+                            如那以悬锋为名的险城，男人的一切尽皆藏于迷雾，唯有弑王者的恶名为人所闻。<br>
+                            他那不死不伤的身躯，既能阻绝刀剑，亦能喝退探究者的目光。<br>
+                            那便看向他的道途，唯此可以一窥那争斗着的心。<br>他用烈火烧焚前路，而归途....归途以血作辙。</p>
+                    </div>
+                </div>
+                <div class="intro" id="xiadie">
+                    <img class="card" src="https://iili.io/n4X44NR.png">
+                    <div class="charac">
+                        <h3>来生的侍女 遐蝶</h3>
+                        <div class="line"></div>
+                        <p>盛世倾颓，旧日不复，纵是死亡，亦要寻求归处。<br>她行过哀地里亚，掌心魂灵哀鸣，其声未曾怀恨。<br>荣耀是否与死亡等价--为寻求一答，她再未止步。<br>旅途漫长，启程千年。<br>她仍未知晓，自身应葬何处。
+                        </p>
+                    </div>
+                </div>
+                <div class="intro" id="saifeier">
+                    <img class="card" src="https://iili.io/n4XrO2s.png">
+                    <div class="charac">
+                        <h3>诡计的羁客 赛飞儿</h3>
+                        <div class="line"></div>
+                        <p>欺瞒、诵诈，世人唾弃此种灾厄，千载一如既往。<br>
+                            而灵动的飞贼只抖抖猫耳、蒙好兜帽，将珍宝揽入私囊。<br>世界吝惜赠予她所谓英雄的宿命，她也不屑给予世界黯淡无光的真情。</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        let inputname = document.querySelector(".enterbox");
+        let enterbutton = document.getElementById("entry");
+
+        enterbutton.addEventListener('click', function () {
+            let name = inputname.value;
+            document.getElementById('pname').textContent = name;
+            localStorage.setItem('pname', name);
+
+        });
+
+        const form = document.querySelector('.in-put');
+        form.addEventListener('submit', function (stop) {
+            stop.preventDefault();
+            document.getElementById('sign').classList.add('off')
+        });
+
+
+        const action1 = document.querySelector('.c');
+        const page1 = document.getElementById('zhou');
+        const action2 = document.querySelectorAll('.c')[1];
+        const page2 = document.getElementById('ye');
+        const action3 = document.querySelectorAll('.c')[2];
+        const page3 = document.getElementById('jiu');
+
+        function showPage(pId) {
+            document.getElementById(pId).classList.remove('off');
+
+        }
+        action1.addEventListener('click', function () {
+            document.getElementById('total').classList.add('off');
+            document.getElementById('ye').classList.add('off');
+            document.getElementById('jiu').classList.add('off')
+            showPage('zhou');
+        })
+        action2.addEventListener('click', function () {
+            document.getElementById('total').classList.add('off');
+            document.getElementById('zhou').classList.add('off');
+            document.getElementById('jiu').classList.add('off');
+            showPage('ye');
+        })
+        action3.addEventListener('click', function () {
+            document.getElementById('total').classList.add('off');
+            document.getElementById('zhou').classList.add('off');
+            document.getElementById('ye').classList.add('off');
+            showPage('jiu');
+        })
+        showPage('total')
+
+        document.querySelectorAll('[data-cha]').forEach(function (check) {
+            check.addEventListener('click', function () {
+                const id = check.dataset.cha;
+                document.getElementById('detail').classList.remove('off')
+                document.getElementById(id).classList.add('on');
+                document.body.classList.add('lock');
+            })
+
+        })
+        document.querySelector('.back').addEventListener('click', function () {
+            document.getElementById('detail').classList.add('off');
+            document.querySelectorAll('[data-cha]').forEach(function (close) {
+                const id = close.dataset.cha;
+                document.getElementById(id).classList.remove('on')
+            });
+            document.body.classList.remove('lock');
+
+        })
+
+        const open = document.querySelector('.open');
+        const list=document.querySelector('.z.close')
+        open.addEventListener('click', function () {
+            const condition = list.classList.toggle('close');
+            open.setAttribute('aria-expanded', close)
+        })
+
+
+    </script>
+</body>
+
+</html>
